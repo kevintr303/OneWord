@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Python cache
+*.log
+*.sqlite3
+*.db
+*.sqlite
+*.pyo
+*.pyd
+*.pdb
+
+# Environment variables / Secrets
+.env
+*.env
+
+# macOS files
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# Render deployment artifacts
+*.render-build/
