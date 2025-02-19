@@ -11,29 +11,6 @@
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">OneWord</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <form class="d-flex ms-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search words..." aria-label="Search"
-                        id="searchInput" />
-                </form>
-                <div class="ms-2">
-                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#aboutModal">
-                        About
-                    </button>
-                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#submitModal">
-                        Submit
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
 
     <header class="py-5 text-center text-white" style="background: linear-gradient(135deg, #007bff, #0056b3);">
         <div class="container">
@@ -41,6 +18,37 @@
             <p class="lead">Collaborative Word Experiment – Submit &amp; Vote on Words!</p>
         </div>
     </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">OneWord</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <form class="d-flex my-2 my-lg-0">
+                            <input class="form-control me-2" type="search" placeholder="Search words..."
+                                aria-label="Search" id="searchInput" />
+                        </form>
+                    </li>
+                    <li class="nav-item ms-lg-3 my-2 my-lg-0">
+                        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                            About
+                        </button>
+                    </li>
+                    <li class="nav-item ms-lg-3 my-2 my-lg-0">
+                        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#submitModal">
+                            Submit
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div id="alertContainer" class="position-fixed bottom-0 start-50 translate-middle-x p-3"
         style="z-index: 1050; max-width: 600px;"></div>
@@ -50,7 +58,7 @@
         <div class="word-grid mt-3" id="wordList"></div>
     </div>
 
-    <div class="zoom-control">
+    <div class="zoom-control" style="position: fixed; bottom: 1rem; right: 1rem; z-index: 1050;">
         <button id="zoomOutBtn" class="btn btn-outline-primary">–</button>
         <span id="zoomValue" class="mx-2"></span>
         <button id="zoomInBtn" class="btn btn-outline-primary">+</button>
@@ -72,7 +80,8 @@
                         <input type="color" id="colorPicker" class="form-control form-control-color me-2"
                             value="#007bff" style="width: 2.5rem;" />
                         <button id="randomColorBtn" type="button" class="btn btn-outline-secondary">
-                            <i class="bi bi-palette"></i> Random
+                            <i class="bi bi-palette"></i>
+                            Random
                         </button>
                     </div>
                 </div>
@@ -103,11 +112,14 @@
                     </ul>
                     <p>Check out the source code on GitHub!</p>
                     <a href="https://github.com/kevintr303/oneword" target="_blank" class="btn btn-primary">
-                        <i class="bi bi-github"></i> View on GitHub
+                        <i class="bi bi-github"></i>
+                        View on GitHub
                     </a>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
                 </div>
             </div>
         </div>
