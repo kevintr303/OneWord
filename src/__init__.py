@@ -1,11 +1,17 @@
 from flask import Flask, render_template
-from config import Config
+import os
+from config import Config, ProductionConfig
 from src.extensions import db, socketio
 from src.routes.words import words_bp
 
 def create_app():
     app = Flask(__name__, template_folder="../templates", static_folder="../static")
-    app.config.from_object(Config)
+    
+    env = os.getenv("FLASK_ENV", "production")
+    if env == "production":
+        app.config.from_object(ProductionConfig)
+    else:
+        app.config.from_object(Config)
 
     db.init_app(app)
     socketio.init_app(app)
