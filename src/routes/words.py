@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from datetime import datetime, timedelta, timezone
 from src.models import Word
-from src.extensions import db
+from src.extensions import db, limiter
 from src.utils.delta_store import pending_deltas
 
 words_bp = Blueprint("words", __name__)
@@ -32,6 +32,7 @@ def fetch_words_data(search="", since=None, offset=0, limit=50):
     return {"words": result, "total": total, "timestamp": datetime.now(timezone.utc).timestamp()}
 
 @words_bp.route("/submit", methods=["POST"])
+@limiter.limit("1 per 5 minutes")
 def submit_word():
     data = request.get_json() or {}
     word_text = data.get("word", "").strip().lower()
@@ -72,6 +73,7 @@ def fetch_words():
     return jsonify(data)
 
 @words_bp.route("/vote", methods=["POST"])
+@limiter.limit("20 per minute")
 def vote_word():
     data = request.get_json() or {}
     word_text = data.get("word", "").strip().lower()

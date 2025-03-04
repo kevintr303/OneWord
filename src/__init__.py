@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import os
 from config import Config, ProductionConfig
-from src.extensions import db, socketio
+from src.extensions import db, socketio, limiter
 from src.routes.words import words_bp
 
 def create_app():
@@ -15,6 +15,7 @@ def create_app():
 
     db.init_app(app)
     socketio.init_app(app)
+    limiter.init_app(app)
 
     with app.app_context():
         db.create_all()
